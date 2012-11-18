@@ -21,7 +21,7 @@ Right now it just deals with encoding integers to an arbitrary base.
     console.log(b.base_decode("FF", hex));
     // => 255
 
-###...using an arbitrary base
+###Using an arbitrary base
 
     var b = require("./base_encode");
     var mybase = "asdf123";
