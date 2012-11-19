@@ -10,16 +10,20 @@ Right now it just deals with encoding integers to an arbitrary base.
     console.log(b.decode("NV"));
     // => 777
 
-###Converting between hex and decimal
+###Converting between hex, decimal, and binary
 
     var b = require("./base_encode");
     var hex = "0123456789ABCDEF";
+    var binary = "01";
 
     console.log(b.encode(255, hex));
     // => "FF"
 
     console.log(b.decode("FF", hex));
     // => 255
+
+    console.log(b.convert("FF", hex, binary));
+    // => 11111111
 
 ###Using an arbitrary base
 

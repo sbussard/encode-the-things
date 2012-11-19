@@ -4,6 +4,9 @@
 // inspiration for this project was found at
 // http://stackoverflow.com/questions/1119722/base-62-conversion-in-python
 
+// defaultmap was designed for readability
+var defaultmap = "123456789ABCDEFGHIJKLMNPQRSTUVWXYZ";
+
 /**
 * encode
 * @returns
@@ -16,7 +19,7 @@ var encode = function (n, map) {
   var rem,
     arr = [],
     num = n || '',
-    charmap = map || "123456789ABCDEFGHIJKLMNPQRSTUVWXYZ",
+    charmap = map || defaultmap,
     base = charmap.length;
 
   if (num === '') {
@@ -42,8 +45,9 @@ var encode = function (n, map) {
 * map - a string of characters that represents the base that m has been mapped to
 */
 var decode = function(m, map) {
-  var charmap = map || "123456789ABCDEFGHIJKLMNPQRSTUVWXYZ";
-  res = 0;
+  var charmap = map || defaultmap,
+    res = 0;
+
   for(var i = 0; i < m.length; i++) {
     var x = Math.pow(charmap.length, (m.length - i - 1)),
       val = parseInt(charmap.indexOf(m.charAt(i)), 10);
@@ -53,10 +57,28 @@ var decode = function(m, map) {
   return res;
 };
 
+/**
+* convert
+* @returns
+* The string that is a result of converting the value of n
+* represented in map1 to the value of n represented in map2
+* @params
+* n - a number represented in map1
+* map1 - initial map
+* map2 - final map
+* @example
+* to convert between hex and binary one would use
+* convert("FF", "0123456789ABDEF", "01");
+*/
+var convert = function (n, map1, map2) {
+  return encode(decode(n, map1), map2);
+};
+
 // if it's a node.js module, export the functions
 if(typeof module !== "undefined") {
   module.exports = {
     encode: encode,
-    decode: decode
+    decode: decode,
+    convert: convert
   };
 }
