@@ -69,6 +69,7 @@ var decode = function(m, map) {
 * @example
 * to convert between hex and binary one would use
 * convert("FF", "0123456789ABDEF", "01");
+* // => 11111111
 */
 var convert = function (n, map1, map2) {
   return encode(decode(n, map1), map2);
