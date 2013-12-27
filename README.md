@@ -1,6 +1,8 @@
 #A library for encoding things  
 Right now it just deals with encoding integers to an arbitrary base.
 
+**FULL DISCLOSURE**: It's pretty unreliable at the moment.
+
 ##Example usage in node.js
     var b = require("./base_encode");
 
